@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createContext } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { useState } from 'react';
 import app from '../FireBase/Hooks/Firebase.config';
 
@@ -19,6 +19,7 @@ const UseContext = ({ children }) => {
         sendEmailVerification(auth.currentUser)
             .then(() => {
                 alert('check email')
+                
             })
         return
     }
@@ -37,6 +38,9 @@ const UseContext = ({ children }) => {
     const githublogin = (gitprovider) => {
         return signInWithPopup(auth,gitprovider)
     }
+    const logout = () => {
+        return signOut(auth);
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, cureentUser => {
@@ -49,7 +53,7 @@ const UseContext = ({ children }) => {
         }
 
     }, [])
-    const authInfo = { createSingup, emailverification, singIn,users,loding,ResetPassword,googlelogin,githublogin }
+    const authInfo = { createSingup, emailverification, singIn,users,loding,ResetPassword,googlelogin,githublogin,logout }
     return (
         <ContextAuth.Provider value={authInfo}>
             {children}

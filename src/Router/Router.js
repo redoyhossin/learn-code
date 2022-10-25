@@ -3,7 +3,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HandleError from '../HandleError/HandleError';
 import Main from '../Layout/Main';
 import About from '../pages/About/About';
+import Blog from '../pages/blogs/Blog';
+import Courses from '../pages/Courses/Courses';
+import Faq from '../pages/FAQ/Faq';
+import Login from '../pages/formLoginSingup/Login/Login';
+import Registration from '../pages/formLoginSingup/registration/Registration';
 import Home from '../pages/Home/Home';
+import ProtectedRout from '../pages/ProtectedRout/ProtectedRout';
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -16,8 +22,29 @@ const Router = () => {
                     element:<Home/>
                 },
                 {
-                    path: 'About',
+                    path: '/About',
                     element:<About/>
+                },
+                {
+                    path: '/Courses',
+                    element: <ProtectedRout><Courses />,</ProtectedRout>
+                    
+                },
+                {
+                    path: '/Blog',
+                    element:<Blog/>
+                },
+                {
+                    path: '/Faq',
+                    element:<Faq/>
+                },
+                {
+                    path: 'Login',
+                    element:<Login/>
+                },
+                {
+                    path: 'Registration',
+                    element:<Registration/>
                 }
             ]
         },

@@ -1,13 +1,13 @@
 import React from 'react';
 import Login from '../formLoginSingup/Login/Login';
-import Singup from '../formLoginSingup/Singup/Singup';
+import Registration from '../formLoginSingup/registration/Registration';
 
 const Home = () => {
     return (
         <div>
             this is home
             <Login/>
-            {/* <Singup/> */}
+          {/* <Registration/> */}
         </div>
     );
 };

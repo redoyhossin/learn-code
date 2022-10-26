@@ -5,6 +5,7 @@ import Main from '../Layout/Main';
 import About from '../pages/About/About';
 import Blog from '../pages/blogs/Blog';
 import CartDetails from '../pages/Courses/AllCart/Cart/CartDetails/CartDetails';
+import Checkout from '../pages/Courses/AllCart/CartButton/Checkout/Checkout';
 import Courses from '../pages/Courses/Courses';
 import Faq from '../pages/FAQ/Faq';
 import Login from '../pages/formLoginSingup/Login/Login';
@@ -28,7 +29,7 @@ const Router = () => {
                 },
                 {
                     path: '/Courses',
-                    element: <ProtectedRout><Courses />,</ProtectedRout>,
+                    element: <ProtectedRout><Courses /></ProtectedRout>,
                     loader: () => fetch('http://localhost:5000/allproduct'),
                 },
 
@@ -53,6 +54,12 @@ const Router = () => {
                     loader: ({ params }) => fetch(`http://localhost:5000/product/${params.CartId}`),
                     element: <CartDetails />,
                     
+                },
+                {
+                    path: '/CartDetails/:CartDetailsId',
+                    element: <ProtectedRout><Checkout /></ProtectedRout>,
+
+                    loader: ({ params }) => fetch(`http://localhost:5000/product/${params.CartDetailsId}`),
                 }
               
 

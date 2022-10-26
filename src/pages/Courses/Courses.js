@@ -9,7 +9,7 @@ const Courses = () => {
     return (
         <div className='mt-10 mx-4 flex justify-center'>
             <div className='lg:flex justify-between'>
-                <div className='  bg-red-900'>
+                <div className=''>
                     {
                         productdata.map(pd => <CartButton key={pd.id} pd={pd} />)
                     }

@@ -49,15 +49,12 @@ const Router = () => {
                     element: <Registration />
                 },
                 {
-                    path: '/Cart/:id',
+                    path: '/Cart/:CartId',
+                    loader: ({ params }) => fetch(`http://localhost:5000/product/${params.CartId}`),
                     element: <CartDetails />,
-                    loader: ({params}) => fetch(`http://localhost:5000/allproduct${params.id}`)
+                    
                 }
-                // {
-                //     path: 'SingleCart',
-                //     element: <SingleCart></SingleCart>,
-                //     loader: () => fetch('http://localhost:5000/allproduct')
-                // }
+              
 
             ]
         },

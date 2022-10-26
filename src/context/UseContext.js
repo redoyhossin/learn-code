@@ -12,6 +12,7 @@ const UseContext = ({ children }) => {
     const [loding, setLoding] = useState(true);
 
     const createSingup = (email, password) => {
+        setLoding(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
@@ -19,26 +20,30 @@ const UseContext = ({ children }) => {
         sendEmailVerification(auth.currentUser)
             .then(() => {
                 alert('check email')
-                
+
             })
         return
     }
 
     const singIn = (email, password) => {
+        setLoding(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const ResetPassword = (email) => {
-        return sendPasswordResetEmail(auth,email)
+        return sendPasswordResetEmail(auth, email)
     }
     const googlelogin = (provider) => {
-    return signInWithPopup(auth,provider)
-}
+        setLoding(true);
+        return signInWithPopup(auth, provider)
+    }
 
     const githublogin = (gitprovider) => {
-        return signInWithPopup(auth,gitprovider)
+        setLoding(true);
+        return signInWithPopup(auth, gitprovider)
     }
     const logout = () => {
+        setLoding(true);
         return signOut(auth);
     }
 
@@ -53,7 +58,7 @@ const UseContext = ({ children }) => {
         }
 
     }, [])
-    const authInfo = { createSingup, emailverification, singIn,users,loding,ResetPassword,googlelogin,githublogin,logout }
+    const authInfo = { createSingup, emailverification, singIn, users, loding, ResetPassword, googlelogin, githublogin, logout }
     return (
         <ContextAuth.Provider value={authInfo}>
             {children}

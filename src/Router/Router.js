@@ -4,6 +4,7 @@ import HandleError from '../HandleError/HandleError';
 import Main from '../Layout/Main';
 import About from '../pages/About/About';
 import Blog from '../pages/blogs/Blog';
+import CartDetails from '../pages/Courses/AllCart/Cart/CartDetails/CartDetails';
 import Courses from '../pages/Courses/Courses';
 import Faq from '../pages/FAQ/Faq';
 import Login from '../pages/formLoginSingup/Login/Login';
@@ -19,33 +20,45 @@ const Router = () => {
             children: [
                 {
                     path: '/',
-                    element:<Home/>
+                    element: <Home />
                 },
                 {
                     path: '/About',
-                    element:<About/>
+                    element: <About />
                 },
                 {
                     path: '/Courses',
-                    element: <ProtectedRout><Courses />,</ProtectedRout>
-                    
+                    element: <ProtectedRout><Courses />,</ProtectedRout>,
+                    loader: () => fetch('http://localhost:5000/allproduct'),
                 },
+
                 {
                     path: '/Blog',
-                    element:<Blog/>
+                    element: <Blog />
                 },
                 {
                     path: '/Faq',
-                    element:<Faq/>
+                    element: <Faq />
                 },
                 {
                     path: 'Login',
-                    element:<Login/>
+                    element: <Login />
                 },
                 {
                     path: 'Registration',
-                    element:<Registration/>
+                    element: <Registration />
+                },
+                {
+                    path: '/Cart/:id',
+                    element: <CartDetails />,
+                    loader: ({params}) => fetch(`http://localhost:5000/allproduct${params.id}`)
                 }
+                // {
+                //     path: 'SingleCart',
+                //     element: <SingleCart></SingleCart>,
+                //     loader: () => fetch('http://localhost:5000/allproduct')
+                // }
+
             ]
         },
         {

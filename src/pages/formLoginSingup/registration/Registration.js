@@ -1,6 +1,7 @@
 // import React from 'react';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ContextAuth } from '../../../context/UseContext';
 
 
@@ -38,6 +39,7 @@ const Registration = () => {
                 setSucsess(true)
                 setValidation('');
                 emailverification();
+                toast.success('success')
 
             })
             .catch(error => setSucsess(error.message));

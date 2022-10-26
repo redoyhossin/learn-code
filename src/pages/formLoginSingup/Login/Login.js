@@ -1,7 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
 import { ContextAuth } from '../../../context/UseContext';
 
 const Login = () => {
@@ -54,16 +53,7 @@ const Login = () => {
     const handlereset = () => {
         ResetPassword(email)
             .then(() => {
-                toast.success('Check your email', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
+              alert('check mail')
 
             }).catch((error) => setValidation2(error.message))
     }
@@ -106,7 +96,7 @@ const Login = () => {
                     <label htmlFor="terms" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <Link className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</Link></label>
                 </div>
                 <div className='flex items-center justify-between mt-4'>
-                    <Link onClick={handlereset} className="text-sm text-gray-600 dark:text-gray-200 hover:text-gray-500">Forget Password?</Link> <ToastContainer />
+                    <Link onClick={handlereset} className="text-sm text-gray-600 dark:text-gray-200 hover:text-gray-500">Forget Password?</Link> 
                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
                 </div>
                 <div className='flex items-center justify-center py-4 text-center'>

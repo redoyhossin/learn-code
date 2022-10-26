@@ -42,8 +42,9 @@ const Navbars = () => {
                                 <Dropdown
                                     arrowIcon={false}
                                     inline={true}
-                                    label={<Avatar alt="User settings" img={users?.photoURL
-                                    } rounded={true} />}
+                                    label={<Avatar alt="User settings" img={users?.photoURL}
+                                        
+                                        rounded={true} />}
                                 >
                                     <Dropdown.Header>
                                         <span className="block text-sm">
@@ -65,7 +66,7 @@ const Navbars = () => {
 
                         ) :
                             (
-                                <Link to='/Login' className='text-base font-semibold bg-slate-500 px-3 py-1 rounded text-slate-700'>Login</Link>
+                                <Link to='/Login' className='text-base font-semibold bg-slate-500 px-3 py-1 rounded text-slate-200'>Login</Link>
 
                             )}
                         <Navbar.Toggle />

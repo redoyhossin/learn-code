@@ -39,7 +39,9 @@ const Router = () => {
                 },
                 {
                     path: '/Faq',
-                    element: <Faq />
+                    element: <Faq />,
+                    loader: () => fetch('https://server-learn-code.vercel.app/allproduct'),
+
                 },
                 {
                     path: 'Login',
@@ -60,7 +62,8 @@ const Router = () => {
                     element: <ProtectedRout><Checkout /></ProtectedRout>,
 
                     loader: ({ params }) => fetch(`https://server-learn-code.vercel.app/product/${params.CartDetailsId}`),
-                }
+                },
+                
               
 
             ]

@@ -77,7 +77,7 @@ const Navbars = () => {
                         <Link to='/About' className='text-base font-semibold text-slate-700'> About</Link>
                         <Link to='/Courses' className='text-base font-semibold text-slate-700'> Courses</Link>
                         <Link to='/Blog' className='text-base font-semibold text-slate-700'> Blog</Link>
-                        <Link to='/Blog' className='text-base font-semibold text-slate-700'>FAQ</Link>
+                        <Link to='/Faq' className='text-base font-semibold text-slate-700'>FAQ</Link>
 
                         <label htmlFor="red-toggle" className="inline-flex relative items-center mr-5 cursor-pointer">
                             <input type="checkbox" value="" id="red-toggle" className="sr-only peer" defaultChecked />

@@ -36,6 +36,10 @@ const Registration = () => {
         createSingup(email, password)
             .then(result => {
                 const user = result.user;
+                setSucsess(true)
+                setValidation('');
+                emailverification();
+                
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo
                 }).then(() => {
@@ -44,10 +48,6 @@ const Registration = () => {
                 }).catch((error) => {
                     toast.error(error.message)
                 });
-
-                setSucsess(true)
-                setValidation('');
-                emailverification();
 
             })
             .catch(error => setSucsess(error.message));

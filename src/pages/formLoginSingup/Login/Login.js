@@ -31,7 +31,6 @@ const Login = () => {
         singIn(email, password)
             .then((result) => {
                 const user = result.user;
-                console.log(user)
                 setRestmail(user)
                 setValidation2('');
                 form.reset();
@@ -45,7 +44,6 @@ const Login = () => {
     const emailreset = (e) => {
         const email = e.target.value;
         setRestmail(email)
-        console.log(email)
     }
 
     const handlereset = () => {

@@ -1,4 +1,5 @@
 // import React from 'react';
+import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -8,7 +9,7 @@ import { ContextAuth } from '../../../context/UseContext';
 const Registration = () => {
     const [validation, setValidation] = useState('');
     const { createSingup } = useContext(ContextAuth);
-    const { emailverification } = useContext(ContextAuth);
+    const { emailverification, auth } = useContext(ContextAuth);
     const [sucsess, setSucsess] = useState(false);
 
     const handleSingup = (e) => {
@@ -19,27 +20,36 @@ const Registration = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo)
         if (password.length < 8) {
-            setValidation('pls enter min 8 ')
+            toast.error('Enter valid password')
             return;
         }
         if (!/^\S+@\S+\.\S+$/.test(email)) {
-            setValidation('enter email')
+            setValidation('enter valid password')
             return;
         }
         if (name.length < 6) {
-            setValidation('enter name min 8 ')
+            setValidation(' enter minimum 6 character  ')
             return;
         }
         form.reset();
         createSingup(email, password)
             .then(result => {
                 const user = result.user;
+
+
+                updateProfile(auth.currentUser, {
+                    displayName: name, photoURL: photo
+                }).then(() => {
+                    toast.success('Update success')
+
+                }).catch((error) => {
+                    toast.error(error.message)
+                });
+
                 setSucsess(true)
                 setValidation('');
                 emailverification();
-                toast.success('success')
 
             })
             .catch(error => setSucsess(error.message));
@@ -50,6 +60,10 @@ const Registration = () => {
         <div>
             <div>
                 <div className='w-96 m-auto'>
+                    <div className='text-yellow-500 text-xl'>
+                        {sucsess && <p> Registration successfuuly </p>}
+                    </div>
+                    <h1 className='text-center text-red-600'>{validation}</h1>
 
 
                     <form onSubmit={handleSingup}>

@@ -35,7 +35,7 @@ const Checkout = () => {
                                 outline={true}
                                 gradientDuoTone="purpleToBlue"
                             >
-                                Enroll Now
+                                Checkout
                             </Button>
                         </Link>
                     </div>

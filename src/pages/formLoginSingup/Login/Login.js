@@ -1,11 +1,11 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ContextAuth } from '../../../context/UseContext';
 
 const Login = () => {
     const [validation2, setValidation2] = useState('');
-    const [sucsess, setSucsess] = useState(false);
     const [email, setRestmail] = useState('');
     const { singIn, ResetPassword, googlelogin, githublogin } = useContext(ContextAuth);
     const provider = new GoogleAuthProvider()
@@ -16,7 +16,6 @@ const Login = () => {
 
     const handlelogin = (e) => {
         e.preventDefault();
-        setSucsess(false);
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -36,7 +35,7 @@ const Login = () => {
                 setRestmail(user)
                 setValidation2('');
                 form.reset();
-                setSucsess(true);
+                toast.success('login success')
                 navigate(from, { replace: true });
 
             }).catch((error) => setValidation2(error.message))
@@ -53,6 +52,7 @@ const Login = () => {
         ResetPassword(email)
             .then(() => {
                 alert('check mail')
+                toast.info('reset password check your mail')
 
             }).catch((error) => setValidation2(error.message))
     }
@@ -61,6 +61,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 navigate(from, { replace: true })
+                toast.success('login success')
 
             }).catch(error => console.log('error', error));
     }
@@ -70,6 +71,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 navigate(from, { replace: true })
+                toast.success('login success')
 
             }).catch(error => console.log('error', error));
     }
@@ -77,7 +79,7 @@ const Login = () => {
     return (
         <div className='w-96 m-auto'>
 
-
+            <h1 className='text-center text-red-600'>{validation2}</h1>
             <form onSubmit={handlelogin}>
                 <div className="mb-6">
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email Address</label>

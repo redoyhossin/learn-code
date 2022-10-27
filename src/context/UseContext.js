@@ -3,6 +3,7 @@ import { createContext } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { useState } from 'react';
 import app from '../FireBase/Hooks/Firebase.config';
+import { toast } from 'react-toastify';
 
 export const ContextAuth = createContext();
 const auth = getAuth(app)
@@ -19,7 +20,7 @@ const UseContext = ({ children }) => {
     const emailverification = () => {
         sendEmailVerification(auth.currentUser)
             .then(() => {
-                alert('check email')
+                toast.info('check your email')
 
             })
         return
@@ -58,7 +59,7 @@ const UseContext = ({ children }) => {
         }
 
     }, [])
-    const authInfo = { createSingup, emailverification, singIn, users, loding, ResetPassword, googlelogin, githublogin, logout }
+    const authInfo = { createSingup, emailverification, singIn, users, loding, ResetPassword, googlelogin, githublogin, logout,auth }
     return (
         <ContextAuth.Provider value={authInfo}>
             {children}

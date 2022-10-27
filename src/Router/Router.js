@@ -30,7 +30,7 @@ const Router = () => {
                 {
                     path: '/Courses',
                     element: <ProtectedRout><Courses /></ProtectedRout>,
-                    loader: () => fetch('http://localhost:5000/allproduct'),
+                    loader: () => fetch('https://server-learn-code.vercel.app/allproduct'),
                 },
 
                 {
@@ -51,7 +51,7 @@ const Router = () => {
                 },
                 {
                     path: '/Cart/:CartId',
-                    loader: ({ params }) => fetch(`http://localhost:5000/product/${params.CartId}`),
+                    loader: ({ params }) => fetch(`https://server-learn-code.vercel.app/product/${params.CartId}`),
                     element: <CartDetails />,
                     
                 },
@@ -59,7 +59,7 @@ const Router = () => {
                     path: '/CartDetails/:CartDetailsId',
                     element: <ProtectedRout><Checkout /></ProtectedRout>,
 
-                    loader: ({ params }) => fetch(`http://localhost:5000/product/${params.CartDetailsId}`),
+                    loader: ({ params }) => fetch(`https://server-learn-code.vercel.app/product/${params.CartDetailsId}`),
                 }
               
 

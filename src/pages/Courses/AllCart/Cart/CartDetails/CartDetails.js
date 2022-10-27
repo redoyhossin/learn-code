@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import PdfFile from './PdfFile/PdfFile';
 
 const CartDetails = () => {
     const product = useLoaderData()
@@ -10,9 +9,8 @@ const CartDetails = () => {
         <div>
             <h1 className='text-center font-bold text-2xl'>
                 {name}
-            </h1> <div className='flex justify-center'>
-                <PdfFile />
-            </div>
+            </h1>
+            
             <div className='flex justify-center my-10'>
                 <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">

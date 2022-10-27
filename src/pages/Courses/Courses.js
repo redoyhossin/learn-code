@@ -10,7 +10,7 @@ const Courses = () => {
         <div className='mt-10 mx-4 flex justify-center'>
             <div className='lg:flex justify-between'>
                 <div className=''>
-                    <h1 className='text-xl mb-2'>Catagoris</h1>
+                    <h1 className='text-xl mb-2'>categories</h1>
                     {
                         productdata.map(pd => <CartButton key={pd.id} pd={pd} />)
                     }

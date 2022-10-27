@@ -2,6 +2,7 @@ import { Avatar, Dropdown, Navbar, Tooltip } from 'flowbite-react';
 import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logo from '../../../assets/img/logo.png'
 import { ContextAuth } from '../../../context/UseContext';
 
@@ -10,8 +11,8 @@ const Navbars = () => {
     const handlelogout = () => {
         logout()
             .then(() => {
-
-            }).catch(error => console.log('error', error));
+ toast.success('Logout success')
+            }).catch(error => toast.error(error.message));
     }
 
     return (

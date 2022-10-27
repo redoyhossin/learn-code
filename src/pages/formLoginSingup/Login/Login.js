@@ -9,7 +9,8 @@ const Login = () => {
     const [email, setRestmail] = useState('');
     const { singIn, ResetPassword, googlelogin, githublogin } = useContext(ContextAuth);
     const provider = new GoogleAuthProvider()
-    const gitprovider = new GithubAuthProvider()
+
+    const provider2 = new GithubAuthProvider()
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -61,17 +62,18 @@ const Login = () => {
                 navigate(from, { replace: true })
                 toast.success('login success')
 
-            }).catch(error => console.log('error', error));
+            }).catch(error => toast.error(error.message));
     }
 
     const handlegithub = () => {
-        githublogin(gitprovider)
+        githublogin(provider2)
             .then(result => {
                 const user = result.user;
+                console.log(user)
                 navigate(from, { replace: true })
                 toast.success('login success')
 
-            }).catch(error => console.log('error', error));
+            }).catch(error => toast.error(error.message));
     }
 
     return (

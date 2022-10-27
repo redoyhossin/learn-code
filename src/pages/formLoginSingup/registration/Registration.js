@@ -39,7 +39,6 @@ const Registration = () => {
                 setSucsess(true)
                 setValidation('');
                 emailverification();
-                
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo
                 }).then(() => {

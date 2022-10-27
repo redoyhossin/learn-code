@@ -39,9 +39,9 @@ const UseContext = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
-    const githublogin = (gitprovider) => {
+    const githublogin = (provider) => {
         setLoding(true);
-        return signInWithPopup(auth, gitprovider)
+        return signInWithPopup(auth,provider)
     }
     const logout = () => {
         setLoding(true);

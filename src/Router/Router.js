@@ -29,7 +29,7 @@ const Router = () => {
                 },
                 {
                     path: '/Courses',
-                    element: <ProtectedRout><Courses /></ProtectedRout>,
+                    element: <Courses />,
                     loader: () => fetch('https://server-learn-code.vercel.app/allproduct'),
                 },
 

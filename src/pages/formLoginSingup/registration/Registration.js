@@ -25,7 +25,7 @@ const Registration = () => {
             return;
         }
         if (!/^\S+@\S+\.\S+$/.test(email)) {
-            setValidation('enter valid password')
+            setValidation('enter valid email')
             return;
         }
         if (name.length < 6) {
@@ -36,8 +36,6 @@ const Registration = () => {
         createSingup(email, password)
             .then(result => {
                 const user = result.user;
-
-
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo
                 }).then(() => {
